@@ -1,0 +1,22 @@
+{
+  "name": "dnd-store",
+  "version": "1.0.0",
+  "description": "DnD Shop",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mweaber/dnd-store.git"
+  },
+  "author": "MPW",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mweaber/dnd-store/issues"
+  },
+  "homepage": "https://github.com/mweaber/dnd-store#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
