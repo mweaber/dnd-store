@@ -13,10 +13,11 @@ const CartScreen = ({ match, location, history }) => {
     const { cartItems } = cart
 
     useEffect(() => {
+        console.log(cartItems);
         if (productId) {
             dispatch(addToCart(productId, qty))
         }
-    }, [dispatch, productId, qty])
+    }, [dispatch, productId, qty, cartItems])
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
@@ -30,9 +31,9 @@ const CartScreen = ({ match, location, history }) => {
         <Row>
             <Col md={8}>
                 <h1>Shopping Cart</h1>
-                {cartItems.length === 0 ? <Message>Your cart is empty... <Link to='/'>Go Back</Link></Message> : (
+                {cartItems.length === 0 ? <Message>Your cart is empty <Link to='/'>Go Back</Link></Message> : (
                     <ListGroup variant='flush'>
-                        {cartItems.map(item => (
+                        {cartItems.map((item) => (
                             <ListGroup.Item key={item.product}>
                                 <Row>
                                     <Col md={2}>
@@ -49,7 +50,7 @@ const CartScreen = ({ match, location, history }) => {
                                     <Col md={2}>
                                         <Form.Control as='select' value={item.qty} onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}>
 
-                                            {[...Array(item.countInStock).keys()].map((x) => (
+                                            {[...Array(item.countInStock).keys()].map(x => (
                                                 <option key={x + 1} value={x + 1}>{x + 1}</option>
                                             ))}
                                         </Form.Control>
