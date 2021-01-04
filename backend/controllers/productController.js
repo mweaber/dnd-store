@@ -5,7 +5,15 @@ import Product from '../models/productModel.js'
 //@route    GET /api/products
 //@access   Public
 const getProducts = asyncHandler(async (req, res) => {
-    const products = await Product.find({})
+    const keyword = req.query.keyword ? {
+        name: {
+            $regex: req.query.keyword,
+            $options: 'i'
+        }
+    } : {}
+
+
+    const products = await Product.find({ ...keyword })
 
     res.json(products)
 })
@@ -111,7 +119,7 @@ const createProductReview = asyncHandler(async (req, res) => {
         process.rating = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length
 
         await product.save()
-        res.status(201).json({message: 'Review Added'})
+        res.status(201).json({ message: 'Review Added' })
     } else {
         res.status(404)
         throw new Error('Product not found.')
