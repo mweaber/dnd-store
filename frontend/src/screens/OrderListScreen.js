@@ -60,7 +60,7 @@ const OrderListScreen = ({ history }) => {
                                         (<i className='fas fa-times' style={{ color: 'red' }}></i>)}
                                 </td>
                                 <td>
-                                    <LinkContainer to={`/adminorder/${order._id}`}>
+                                    <LinkContainer to={`/orders/${order._id}`}>
                                         <Button variant='light' className='btn-sm'>
                                             Details
                                         </Button>
